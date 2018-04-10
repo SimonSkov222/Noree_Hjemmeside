@@ -1,0 +1,5 @@
+{
+  "/Home" : "HomeController::Home",
+  "/Home/Kim" : "HomeController::KimLeeee"
+
+}
