@@ -1,8 +1,14 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+spl_autoload_register(function ($class_name)
+{
+    //echo $class_name . ".php\n";
+    include $class_name . '.php';
+    
+});
+
+//
+//
+//$obj  = new MyClass1();
+//$obj2 = new MyClass2(); 
 

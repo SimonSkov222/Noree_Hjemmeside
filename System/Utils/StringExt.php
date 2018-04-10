@@ -1,8 +1,35 @@
 <?php
+namespace System\Utils;
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+class StringExt
+{
+    public static function Test() 
+    {
+         echo "StringExt::Test();\n\n";
+         
+         echo "heh";
+    }
+    
+    public static function StartsWith($str, $check)
+    {
+        $len = strlen($check);
+        $start = substr($str, 0, $len);
+        
+        return $start == $check;
+    }
+    
+    public static function EndsWith($str, $check)
+    {
+        
+        $len = strlen($str);
+        $len2 = strlen($check);
+        $end = substr($str, $len - $len2);
+        
+        return $end == $check;
+    }
 
+
+//    $var = "Hello World";
+//    $startWith = "Hello";
+    
+}
