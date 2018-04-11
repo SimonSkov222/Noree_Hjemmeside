@@ -13,6 +13,12 @@ class StringExt
     public static function StartsWith($str, $check)
     {
         $len = strlen($check);
+        
+        if (strlen($str) < $len) 
+        {
+            return false;
+        }
+        
         $start = substr($str, 0, $len);
         
         return $start == $check;

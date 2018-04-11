@@ -1,5 +1,6 @@
 {
-  "/Home" : "HomeController::Home",
-  "/Home/Kim" : "HomeController::KimLeeee"
+  "/Home" : "/HomeController::Home",
+  "/Home/Kim" : "/HomeController::KimLeeee",
+  "/Test/Kim" : "/HomeController::KimLeeee"
 
 }

@@ -15,8 +15,9 @@ class Routing
         
         $uri = self::GetUri();
         self::$routes = self::GetAllRoutes();
-        echo "myRoute: " .self::GetRoute($uri)."\n";
+        $route = self::GetRoute($uri);
         
+        self::CallRoute($route);
     }
     
     private static function GetUri()
@@ -39,18 +40,19 @@ class Routing
         print_r($routeKeys);
         
         $parts = explode("/", $uri);
+        print_r($parts);
+        
         $route = "";
         $check = "";
         
         foreach ($parts as $part) 
         {
-            if ($part = "") { continue; }
+            if (trim($part) == "") { continue; }
             $check .= strtolower("/$part");
             
-            for ($i = count($routeKeys); $i >= 0; $i--)
+            for ($i = count($routeKeys)-1; $i >= 0; $i--)
             {
                 $keyLow = strtolower($routeKeys[$i]);
-                
                 if (!StringExt::StartsWith($keyLow, $check))
                 {
                     unset($routeKeys[$i]);
@@ -62,8 +64,7 @@ class Routing
                 }
             }
         }
-        
-        if ($route = "") 
+        if ($route == "") 
         {
             $route = "/NotFound";
         }
@@ -79,6 +80,20 @@ class Routing
         print_r($json);
         
         return $json;
+    }
+    
+    private static function CallRoute($route)
+    {
+        $split = explode("::", self::$routes[$route]);
+        
+        $namespace  = "Content/Controllers";
+        $classname = $split[0];
+        $method = $split[1];
+        
+        $controllerName = str_replace("/", "\\", $namespace.$classname);
+        $controlller = new $controllerName();
+        
+        $controlller->$method();
     }
     
     

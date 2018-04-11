@@ -1,8 +1,15 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace Content\Controllers;
+
+use System\Utils\ControllerBasic;
+
+class HomeController extends ControllerBasic
+{
+    public function Home() 
+    {
+        echo "Home";
+        $this->View("/Home");
+    }
+}
 
