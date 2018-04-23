@@ -34,8 +34,20 @@ class StringExt
         return $end == $check;
     }
 
-
-//    $var = "Hello World";
-//    $startWith = "Hello";
-    
+    public static function Format($str, $args) 
+    {
+        $params = func_get_args();
+        
+        
+        for ($i = 1; $i < count($params); $i++) 
+        {
+            
+            $param = preg_replace("/(?<!\/)\{\d+}/", "/$0", $params[$i]);
+            $str = preg_replace("/(?<!\/)\{". ($i-1). "}/", $param, $str);
+        }
+        
+        return $str;
+    }    
 }
+
+//echo StringExt::Format("Hej {0} {1} {0}\n", "Kim {1} {1} {1}", "Leeee");
